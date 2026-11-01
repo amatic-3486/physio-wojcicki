@@ -30,6 +30,7 @@ Apply these primary brand color codes across all UI components:
     - *Primary Headline:* `font-serif`, weight `700` or `600`, line-height `1.15`.
 - **Body & Controls (Sans-Serif):** Use a clean sans-serif (e.g., *Inter*, *Plus Jakarta Sans*, or *Roboto*).
     - *Labels & Eyebrows:* Uppercase, `letter-spacing: 0.1em`, font size `0.75rem` - `0.85rem` (`text-xs` / `text-sm`), primary accent color.
+- **Content Text** must be manageable in the backend
 
 ## 4. Component Patterns & Rules
 
