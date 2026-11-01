@@ -31,7 +31,30 @@ if ( ! function_exists( 'physio_wojcicki_load_dotenv' ) ) {
             return;
         }
 
-        foreach ( file( $path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) as $line ) {
+        $contents = file_get_contents( $path );
+
+        if ( false === $contents || '' === $contents ) {
+            return;
+        }
+
+        // Some editors (e.g. Windows Notepad) save ".env" as UTF-16 or with a
+        // UTF-8 BOM. If left as-is, every value would silently contain NUL
+        // bytes or a leading BOM character, which corrupts credentials (e.g.
+        // the DB password) without producing an obvious parse error ->
+        // MySQL then rejects the login with "Access denied ... (using
+        // password: YES)". Detect and normalize to plain UTF-8 here.
+        if ( 0 === strncmp( $contents, "\xFF\xFE", 2 ) ) {
+            $contents = mb_convert_encoding( substr( $contents, 2 ), 'UTF-8', 'UTF-16LE' );
+        } elseif ( 0 === strncmp( $contents, "\xFE\xFF", 2 ) ) {
+            $contents = mb_convert_encoding( substr( $contents, 2 ), 'UTF-8', 'UTF-16BE' );
+        } elseif ( 0 === strncmp( $contents, "\xEF\xBB\xBF", 3 ) ) {
+            $contents = substr( $contents, 3 );
+        }
+
+        // Strip any stray NUL bytes that might still be present.
+        $contents = str_replace( "\0", '', $contents );
+
+        foreach ( preg_split( "/\r\n|\n|\r/", $contents ) as $line ) {
             $line = trim( $line );
 
             if ( '' === $line || '#' === $line[0] || false === strpos( $line, '=' ) ) {
