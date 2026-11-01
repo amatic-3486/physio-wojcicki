@@ -1,0 +1,78 @@
+/*
+Theme Name: Physio Wojcicki
+Theme URI: https://physiotherapie-wojcicki.de
+Author: Physiotherapie Wojcicki
+Author URI: https://physiotherapie-wojcicki.de
+Description: Individuelles WordPress-Theme für die Physiotherapiepraxis Wojcicki in Neustadt am Rübenberge. Modernes, responsives Design auf Basis von Tailwind CSS.
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.2
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: physio-wojcicki
+*/
+
+/* Google Fonts: Playfair Display (Headings) + Inter (Body) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap');
+
+:root {
+	--color-accent: #C85A32;
+	--color-accent-dark: #BD4F28;
+	--color-secondary: #1E4355;
+	--color-secondary-dark: #163342;
+	--color-cream: #F9F6F0;
+	--color-mint: #E8F2F4;
+	--color-border: #E5E7EB;
+	--color-text: #222222;
+	--color-text-light: #555555;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	color: var(--color-text);
+}
+
+.font-serif {
+	font-family: 'Playfair Display', serif;
+}
+
+.font-script {
+	font-family: 'Caveat', cursive;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: auto;
+	z-index: 100000;
+	background: var(--color-secondary);
+	color: #fff;
+	padding: 0.75rem 1.25rem;
+	border-radius: 0 0 0.5rem 0;
+}
+
+.skip-link:focus {
+	left: 0;
+	top: 0;
+}
+
+/* Floating hero badge */
+.hero-badge {
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile menu transition */
+#mobile-menu {
+	transition: max-height 0.3s ease-in-out;
+}
+
+/* Decorative watermark leaves for location card */
+.leaf-watermark {
+	pointer-events: none;
+}
