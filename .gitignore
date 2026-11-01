@@ -1,0 +1,28 @@
+# Project exclude paths
+/wp-content/uploads/
+
+.idea
+
+input
+
+local-config.php
+
+
+# =========================================================================
+# Cache, Logs & Backups
+# =========================================================================
+wp-content/cache/
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+*.log
+sitemap.xml
+sitemap.xml.gz
+
+
+# Node / Build Tooling in Custom Themes & Plugins
+node_modules/
+npm-debug.log
+yarn-error.log
+.DS_Store
+Thumbs.db
