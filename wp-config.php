@@ -88,10 +88,34 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
     include( dirname( __FILE__ ) . '/local-config.php' );
 } else {
     // Otherwise, use Production credentials (provided via .env)
-    define( 'DB_NAME',     wp_env( 'DB_NAME' ) );
-    define( 'DB_USER',     wp_env( 'DB_USER' ) );
-    define( 'DB_PASSWORD', wp_env( 'DB_PASSWORD' ) );
-    define( 'DB_HOST',     wp_env( 'DB_HOST' ) );
+    $physio_wojcicki_db_name     = wp_env( 'DB_NAME' );
+    $physio_wojcicki_db_user     = wp_env( 'DB_USER' );
+    $physio_wojcicki_db_password = wp_env( 'DB_PASSWORD' );
+    $physio_wojcicki_db_host     = wp_env( 'DB_HOST' );
+
+    // Fail fast with a clear, actionable message instead of WordPress's
+    // generic "Error establishing a database connection" screen whenever the
+    // required DB_* variables could not be read from ".env" (missing file,
+    // wrong directory, wrong filename, etc.).
+    if ( empty( $physio_wojcicki_db_name ) || empty( $physio_wojcicki_db_user ) || empty( $physio_wojcicki_db_host ) ) {
+        if ( ! headers_sent() ) {
+            header( 'Content-Type: text/plain; charset=utf-8' );
+            http_response_code( 500 );
+        }
+
+        die(
+            "Configuration error: Database credentials (DB_NAME/DB_USER/DB_HOST) are missing.\n\n" .
+            "WordPress could not read them from a \".env\" file. Make sure a file named exactly\n" .
+            "\".env\" (not \".env.txt\" or \"env\") exists in this exact directory:\n\n" .
+            '    ' . dirname( __FILE__ ) . "\n\n" .
+            "and contains at least DB_NAME, DB_USER, DB_PASSWORD and DB_HOST (see \".env.example\").\n"
+        );
+    }
+
+    define( 'DB_NAME',     $physio_wojcicki_db_name );
+    define( 'DB_USER',     $physio_wojcicki_db_user );
+    define( 'DB_PASSWORD', $physio_wojcicki_db_password );
+    define( 'DB_HOST',     $physio_wojcicki_db_host );
 
     define( 'WP_HOME', wp_env( 'WP_HOME', 'https://physiotherapie-wojcicki.de' ) );
     define( 'WP_SITEURL', wp_env( 'WP_SITEURL', 'https://physiotherapie-wojcicki.de' ) );
