@@ -1,0 +1,14 @@
+# =========================================================================
+# WordPress Core & System Files
+# =========================================================================
+# Ignoriert WordPress-Core, um den KI-Kontext nicht zu überladen
+/wp-admin/
+/wp-includes/
+/index.php
+/xmlrpc.php
+
+# IDE & Betriebssystem-Dateien
+.idea/
+.git/
+.DS_Store
+Thumbs.db
