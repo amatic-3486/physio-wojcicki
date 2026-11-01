@@ -19,20 +19,84 @@
  * @package WordPress
  */
 
+/**
+ * Load environment variables from a local ".env" file (never committed to
+ * version control, see .gitignore) into PHP's environment, so credentials
+ * no longer need to be hard-coded in this file. See ".env.example" for the
+ * list of supported variables.
+ */
+if ( ! function_exists( 'physio_wojcicki_load_dotenv' ) ) {
+    function physio_wojcicki_load_dotenv( $path ) {
+        if ( ! is_readable( $path ) ) {
+            return;
+        }
+
+        foreach ( file( $path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) as $line ) {
+            $line = trim( $line );
+
+            if ( '' === $line || '#' === $line[0] || false === strpos( $line, '=' ) ) {
+                continue;
+            }
+
+            list( $name, $value ) = explode( '=', $line, 2 );
+            $name  = trim( $name );
+            $value = trim( $value );
+
+            // Strip optional surrounding quotes.
+            if ( strlen( $value ) > 1 && in_array( $value[0], array( '"', "'" ), true ) && substr( $value, -1 ) === $value[0] ) {
+                $value = substr( $value, 1, -1 );
+            }
+
+            if ( false === getenv( $name ) ) {
+                putenv( "$name=$value" );
+                $_ENV[ $name ]    = $value;
+                $_SERVER[ $name ] = $value;
+            }
+        }
+    }
+}
+
+if ( ! function_exists( 'wp_env' ) ) {
+    /**
+     * Reads a value loaded from ".env", with an optional default and
+     * automatic boolean/null casting for common string representations.
+     */
+    function wp_env( $key, $default = null ) {
+        $value = getenv( $key );
+
+        if ( false === $value || '' === $value ) {
+            return $default;
+        }
+
+        switch ( strtolower( $value ) ) {
+            case 'true':
+                return true;
+            case 'false':
+                return false;
+            case 'null':
+                return null;
+        }
+
+        return $value;
+    }
+}
+
+physio_wojcicki_load_dotenv( dirname( __FILE__ ) . '/.env' );
+
 if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
     // If the local file exists, load it
     include( dirname( __FILE__ ) . '/local-config.php' );
 } else {
-    // Otherwise, use Production credentials
-    define( 'DB_NAME',     'db_prod' );
-    define( 'DB_USER',     'db_prod_user' );
-    define( 'DB_PASSWORD', 'jNe6fZ2M?$wxjny3' );
-    define( 'DB_HOST',     'strato' );
+    // Otherwise, use Production credentials (provided via .env)
+    define( 'DB_NAME',     wp_env( 'DB_NAME' ) );
+    define( 'DB_USER',     wp_env( 'DB_USER' ) );
+    define( 'DB_PASSWORD', wp_env( 'DB_PASSWORD' ) );
+    define( 'DB_HOST',     wp_env( 'DB_HOST' ) );
 
-    define( 'WP_HOME', 'https://physiotherapie-wojcicki.de' );
-    define( 'WP_SITEURL', 'https://physiotherapie-wojcicki.de' );
+    define( 'WP_HOME', wp_env( 'WP_HOME', 'https://physiotherapie-wojcicki.de' ) );
+    define( 'WP_SITEURL', wp_env( 'WP_SITEURL', 'https://physiotherapie-wojcicki.de' ) );
 
-    define( 'WP_DEBUG', false );
+    define( 'WP_DEBUG', wp_env( 'WP_DEBUG', false ) );
 }
 
 
@@ -55,15 +119,15 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',          '!6onc9:smq!=l0Z.2Q2^lf<ARABWvQ4Ir$?A4uw=0IjqtMgswIMlPOgWR5!(9qFD' );
-define( 'SECURE_AUTH_KEY',   'i)FfaoV#Y3m){n<e~+YS(F{a&+FF$OQUl*#.`KyN.Za6}nLwmm%0Rk5+ABuFSv`l' );
-define( 'LOGGED_IN_KEY',     '+Jz7u2z+f*  +ex8hbD_C0oM{~8YF42[gj90M>j LKXwtD!)Px,~hy8+-v+Jf%vV' );
-define( 'NONCE_KEY',         '9y/s582M<Juiu6]lsJ5xrl[dQCe2Qvo+nB;TtLuCIMR?O1mO;LXB5j.cEzy_mw|N' );
-define( 'AUTH_SALT',         'z]+G`S.3&pOzbIr2qBSgsALKXS)7C)TZP/trI:fd+(y_z`1~(,cJW+_HF|rFCh2W' );
-define( 'SECURE_AUTH_SALT',  '@([rgCX;6/TWV&ohB=rL>8_#t@Qap4{<IfL$[)iJ]kX)`f6CV)gYVj}2+S{LLQ.(' );
-define( 'LOGGED_IN_SALT',    'Y0yX|USZ%@+^CFAq|24yf@YY~.J7rLY~Z4D&Gh}U;6Oq/`Rm(f`gqh10UVTfn{S5' );
-define( 'NONCE_SALT',        '?LCM)VM^sqR48?q9ve,SxM/zxE|u2-+tP r$HI6om&uFGbQy$1G,4q}P3Z5LZ9;Y' );
-define( 'WP_CACHE_KEY_SALT', 'bA.}J0xdb%6YRfHb.{ 1R9q]k}jV7E:HQxjpev&0U[.)w#I[:n^=_h^WN5w6sTkE' );
+define( 'AUTH_KEY',          wp_env( 'AUTH_KEY' ) );
+define( 'SECURE_AUTH_KEY',   wp_env( 'SECURE_AUTH_KEY' ) );
+define( 'LOGGED_IN_KEY',     wp_env( 'LOGGED_IN_KEY' ) );
+define( 'NONCE_KEY',         wp_env( 'NONCE_KEY' ) );
+define( 'AUTH_SALT',         wp_env( 'AUTH_SALT' ) );
+define( 'SECURE_AUTH_SALT',  wp_env( 'SECURE_AUTH_SALT' ) );
+define( 'LOGGED_IN_SALT',    wp_env( 'LOGGED_IN_SALT' ) );
+define( 'NONCE_SALT',        wp_env( 'NONCE_SALT' ) );
+define( 'WP_CACHE_KEY_SALT', wp_env( 'WP_CACHE_KEY_SALT' ) );
 
 define( 'WPCF7_AUTOP', false );
 
@@ -75,14 +139,14 @@ define( 'WPCF7_AUTOP', false );
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_';
+$table_prefix = wp_env( 'DB_TABLE_PREFIX', 'wp_' );
 
 
 /* Add any custom values between this line and the "stop editing" line. */
 
 
 
-define( 'WP_ENVIRONMENT_TYPE', 'local' );
+define( 'WP_ENVIRONMENT_TYPE', wp_env( 'WP_ENVIRONMENT_TYPE', 'local' ) );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
