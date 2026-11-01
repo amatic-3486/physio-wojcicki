@@ -27,6 +27,20 @@
  */
 if ( ! function_exists( 'physio_wojcicki_load_dotenv' ) ) {
     function physio_wojcicki_load_dotenv( $path ) {
+        // Values are kept in this in-request array (NOT putenv()/$_ENV),
+        // because on PHP-FPM a worker process can serve many requests over
+        // its lifetime, and values set via putenv() in one request can
+        // leak into/persist across later requests on the SAME worker.
+        // That means: if ".env" (or the real DB password on the hosting
+        // panel) is ever changed, some FPM workers could keep answering
+        // with the OLD credentials until they happen to restart - causing
+        // an intermittent/persistent "Access denied ... (using password:
+        // YES)" even though ".env" on disk is correct. Re-reading the file
+        // into a fresh array on every request, and never relying on
+        // putenv()/getenv() for these values, avoids that entirely.
+        global $physio_wojcicki_env;
+        $physio_wojcicki_env = array();
+
         if ( ! is_readable( $path ) ) {
             return;
         }
@@ -70,11 +84,11 @@ if ( ! function_exists( 'physio_wojcicki_load_dotenv' ) ) {
                 $value = substr( $value, 1, -1 );
             }
 
-            if ( false === getenv( $name ) ) {
-                putenv( "$name=$value" );
-                $_ENV[ $name ]    = $value;
-                $_SERVER[ $name ] = $value;
-            }
+            // Stored in the request-local array only (see comment above) -
+            // deliberately NOT putenv()/$_ENV/$_SERVER, to avoid stale
+            // values surviving across requests on long-lived PHP-FPM
+            // workers.
+            $physio_wojcicki_env[ $name ] = $value;
         }
     }
 }
@@ -85,7 +99,15 @@ if ( ! function_exists( 'wp_env' ) ) {
      * automatic boolean/null casting for common string representations.
      */
     function wp_env( $key, $default = null ) {
-        $value = getenv( $key );
+        global $physio_wojcicki_env;
+
+        if ( is_array( $physio_wojcicki_env ) && array_key_exists( $key, $physio_wojcicki_env ) && '' !== $physio_wojcicki_env[ $key ] ) {
+            $value = $physio_wojcicki_env[ $key ];
+        } else {
+            // Fall back to a real environment variable (e.g. one set by the
+            // hosting panel/server itself, not via ".env").
+            $value = getenv( $key );
+        }
 
         if ( false === $value || '' === $value ) {
             return $default;
