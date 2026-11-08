@@ -74,6 +74,42 @@ body {
 	pointer-events: none;
 }
 
+/* Styled lists in page content (e.g. Leistungen) */
+.leistungen-intro ul,
+.entry-content ul {
+	list-style: none;
+	margin: 1.25rem 0 0;
+	padding: 0;
+	display: grid;
+	gap: 0.625rem;
+}
+
+.leistungen-intro ul li,
+.entry-content ul li {
+	position: relative;
+	padding-left: 2.25rem;
+	min-height: 1.5rem;
+	color: var(--color-secondary);
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.leistungen-intro ul li::before,
+.entry-content ul li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.125rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 9999px;
+	background-color: var(--color-accent);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+	background-size: 0.875rem;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
 .cookie-consent-banner {
 	left: 1rem;
 	right: 1rem;
