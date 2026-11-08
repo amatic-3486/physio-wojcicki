@@ -78,17 +78,6 @@
 				)
 			);
 			?>
-			<div class="pt-4 border-t border-[#E5E7EB] flex flex-col gap-3">
-				<a href="<?php echo esc_url( physio_wojcicki_contact( 'phone_href' ) ); ?>" class="flex items-center gap-2 text-secondary font-semibold">
-					<svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h1.5a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106a1.125 1.125 0 0 0-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97a1.125 1.125 0 0 0 .417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-					</svg>
-					<?php echo esc_html( physio_wojcicki_contact( 'phone' ) ); ?>
-				</a>
-				<a href="<?php echo esc_url( home_url( '/#kontakt' ) ); ?>" class="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors">
-					<?php esc_html_e( 'Termin anfragen', 'physio-wojcicki' ); ?>
-				</a>
-			</div>
 		</div>
 	</div>
 </header>

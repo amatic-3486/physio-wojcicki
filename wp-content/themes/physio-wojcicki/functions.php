@@ -139,7 +139,7 @@ function physio_wojcicki_fallback_menu() {
 		'Kontakt'           => home_url( '/#kontakt' ),
 	);
 
-	echo '<ul class="flex items-center gap-8">';
+	echo '<ul class="flex flex-col gap-3 text-base font-medium lg:flex-row lg:items-center lg:gap-8 lg:text-sm">';
 	foreach ( $items as $label => $url ) {
 		$is_active = ( 'Startseite' === $label && is_front_page() );
 		$classes   = $is_active
