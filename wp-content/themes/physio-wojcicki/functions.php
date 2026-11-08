@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'PHYSIO_WOJCICKI_VERSION', '1.0.0' );
+define( 'PHYSIO_WOJCICKI_VERSION', '1.0.1' );
 
 /**
  * Theme setup.
@@ -102,6 +102,9 @@ function physio_wojcicki_scripts() {
 
 	// Mobile navigation toggle.
 	wp_enqueue_script( 'physio-wojcicki-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), PHYSIO_WOJCICKI_VERSION, true );
+
+	// Consent controls for optional Google Fonts.
+	wp_enqueue_script( 'physio-wojcicki-cookie-consent', get_template_directory_uri() . '/assets/js/cookie-consent.js', array(), PHYSIO_WOJCICKI_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

@@ -101,9 +101,31 @@
 				)
 			);
 			?>
+			<button id="cookie-settings-button" type="button" class="rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-xs font-semibold text-secondary transition-colors hover:text-accent" aria-controls="cookie-consent-banner" aria-expanded="true">
+				<?php esc_html_e( 'Cookie-Einstellungen', 'physio-wojcicki' ); ?>
+			</button>
 		</div>
 	</div>
 </footer>
+
+<?php $privacy_policy_url = get_privacy_policy_url(); ?>
+<section id="cookie-consent-banner" class="cookie-consent-banner fixed bottom-4 z-[60] rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-2xl sm:bottom-6" role="dialog" aria-modal="false" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description">
+	<div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+		<div>
+			<h2 id="cookie-consent-title" class="font-serif text-xl font-semibold text-secondary"><?php esc_html_e( 'Datenschutzeinstellungen', 'physio-wojcicki' ); ?></h2>
+			<p id="cookie-consent-description" class="mt-2 text-sm leading-6 text-[#555555]">
+				<?php esc_html_e( 'Das Theme verwendet technisch notwendige Funktionen. Mit Ihrer Zustimmung werden zusätzlich Google Fonts geladen. Dabei wird Ihre IP-Adresse an Google übermittelt. Ihre Auswahl wird für bis zu 180 Tage auf diesem Gerät gespeichert.', 'physio-wojcicki' ); ?>
+			<?php if ( $privacy_policy_url ) : ?>
+				<a class="font-semibold text-secondary underline hover:text-accent" href="<?php echo esc_url( $privacy_policy_url ); ?>"><?php esc_html_e( 'Datenschutzerklärung', 'physio-wojcicki' ); ?></a>
+			<?php endif; ?>
+			</p>
+		</div>
+		<div class="flex shrink-0 flex-col gap-2 sm:w-48">
+			<button id="cookie-consent-reject" type="button" class="rounded-full border border-secondary px-4 py-2.5 text-sm font-semibold text-secondary transition-colors hover:bg-mint"><?php esc_html_e( 'Nur notwendige', 'physio-wojcicki' ); ?></button>
+			<button id="cookie-consent-accept" type="button" class="rounded-full border border-secondary bg-secondary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-secondary-dark"><?php esc_html_e( 'Google Fonts erlauben', 'physio-wojcicki' ); ?></button>
+		</div>
+	</div>
+</section>
 
 <?php wp_footer(); ?>
 </body>

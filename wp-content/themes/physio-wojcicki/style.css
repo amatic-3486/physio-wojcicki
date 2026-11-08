@@ -7,14 +7,11 @@ Description: Individuelles WordPress-Theme für die Physiotherapiepraxis Wojcick
 Requires at least: 6.4
 Tested up to: 6.7
 Requires PHP: 8.2
-Version: 1.0.0
+Version: 1.0.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: physio-wojcicki
 */
-
-/* Google Fonts: Playfair Display (Headings) + Inter (Body) */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap');
 
 :root {
 	--color-accent: #C85A32;
@@ -33,16 +30,16 @@ html {
 }
 
 body {
-	font-family: 'Inter', sans-serif;
+	font-family: 'Inter', Arial, sans-serif;
 	color: var(--color-text);
 }
 
 .font-serif {
-	font-family: 'Playfair Display', serif;
+	font-family: 'Playfair Display', Georgia, serif;
 }
 
 .font-script {
-	font-family: 'Caveat', cursive;
+	font-family: 'Caveat', 'Segoe Script', cursive;
 }
 
 /* Skip link for accessibility */
@@ -75,4 +72,18 @@ body {
 /* Decorative watermark leaves for location card */
 .leaf-watermark {
 	pointer-events: none;
+}
+
+.cookie-consent-banner {
+	left: 1rem;
+	right: 1rem;
+	width: min(42rem, calc(100vw - 2rem));
+}
+
+@media (min-width: 640px) {
+	.cookie-consent-banner {
+		left: auto;
+		right: 1.5rem;
+		width: min(42rem, calc(100vw - 3rem));
+	}
 }
