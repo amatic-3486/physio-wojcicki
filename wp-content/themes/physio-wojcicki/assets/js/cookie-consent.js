@@ -79,6 +79,7 @@
 
 	function setBannerVisibility(visible, moveFocus) {
 		banner.hidden = !visible;
+		banner.style.display = visible ? '' : 'none';
 		settingsButton.setAttribute('aria-expanded', String(visible));
 
 		if (visible && moveFocus) {

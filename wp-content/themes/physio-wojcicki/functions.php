@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'PHYSIO_WOJCICKI_VERSION', '1.0.1' );
+define( 'PHYSIO_WOJCICKI_VERSION', '1.0.2' );
 
 require_once get_template_directory() . '/inc/home-content.php';
 

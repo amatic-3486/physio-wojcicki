@@ -155,7 +155,13 @@ header .custom-logo {
 	border-bottom-color: var(--color-accent);
 }
 
+.cookie-consent-banner[hidden] {
+	display: none !important;
+}
+
 .cookie-consent-banner {
+	max-height: calc(100vh - 2rem);
+	overflow-y: auto;
 	left: 1rem;
 	right: 1rem;
 	width: min(42rem, calc(100vw - 2rem));
