@@ -76,31 +76,12 @@ add_action( 'after_setup_theme', 'physio_wojcicki_setup' );
  * Enqueue scripts and styles.
  */
 function physio_wojcicki_scripts() {
-	// Tailwind CSS via the Play CDN (no local build step required).
-	wp_enqueue_script( 'tailwindcss', 'https://cdn.tailwindcss.com', array(), null, false );
+	// Tailwind CSS, locally built (see tailwind.config.js for the build command).
+	wp_enqueue_style( 'physio-wojcicki-tailwind', get_template_directory_uri() . '/assets/css/tailwind.css', array(), PHYSIO_WOJCICKI_VERSION );
 
-	// Inline Tailwind configuration so brand tokens from the design guidelines are available as utilities.
-	$tailwind_config = "tailwind.config = {
-		theme: {
-			extend: {
-				colors: {
-					accent: { DEFAULT: '#C85A32', dark: '#BD4F28' },
-					secondary: { DEFAULT: '#1E4355', dark: '#163342' },
-					cream: '#F9F6F0',
-					mint: '#E8F2F4',
-				},
-				fontFamily: {
-					serif: ['Playfair Display', 'serif'],
-					sans: ['Inter', 'sans-serif'],
-					script: ['Caveat', 'cursive'],
-				},
-			},
-		},
-	};";
-	wp_add_inline_script( 'tailwindcss', $tailwind_config );
 
 	// Theme stylesheet (fonts + small custom rules not covered by Tailwind utilities).
-	wp_enqueue_style( 'physio-wojcicki-style', get_stylesheet_uri(), array(), PHYSIO_WOJCICKI_VERSION );
+	wp_enqueue_style( 'physio-wojcicki-style', get_stylesheet_uri(), array( 'physio-wojcicki-tailwind' ), PHYSIO_WOJCICKI_VERSION );
 
 	// Mobile navigation toggle.
 	wp_enqueue_script( 'physio-wojcicki-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), PHYSIO_WOJCICKI_VERSION, true );
@@ -141,7 +122,7 @@ function physio_wojcicki_fallback_menu() {
 		'Startseite'        => home_url( '/' ),
 		'Unsere Leistungen' => home_url( '/#leistungen' ),
 		'Praxis'            => home_url( '/#praxis' ),
-		'Kontakt'           => home_url( '/#kontakt' ),
+		'Kontakt'           => home_url( '/kontakt/' ),
 	);
 
 	echo '<ul class="flex flex-col gap-3 text-base font-medium lg:flex-row lg:items-center lg:gap-8 lg:text-sm">';
@@ -159,6 +140,43 @@ function physio_wojcicki_fallback_menu() {
 	}
 	echo '</ul>';
 }
+
+/**
+ * Handle the contact form on the "Kontakt" page.
+ */
+function physio_wojcicki_handle_contact() {
+	$back = wp_get_referer() ? remove_query_arg( 'kontakt', wp_get_referer() ) : home_url( '/kontakt/' );
+
+	if ( ! isset( $_POST['physio_contact_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['physio_contact_nonce'] ) ), 'physio_contact' ) ) {
+		wp_safe_redirect( add_query_arg( 'kontakt', 'error', $back ) . '#kontaktformular' );
+		exit;
+	}
+
+	// Honeypot: bots fill this hidden field.
+	if ( ! empty( $_POST['website'] ) ) {
+		wp_safe_redirect( add_query_arg( 'kontakt', 'ok', $back ) . '#kontaktformular' );
+		exit;
+	}
+
+	$name    = sanitize_text_field( wp_unslash( $_POST['name'] ?? '' ) );
+	$email   = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
+	$message = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
+
+	$sent = false;
+	if ( '' !== $name && is_email( $email ) && '' !== $message ) {
+		$sent = wp_mail(
+			physio_wojcicki_contact( 'email' ),
+			'Kontaktanfrage von ' . str_replace( array( "\r", "\n" ), ' ', $name ),
+			"Name: $name\nE-Mail: $email\n\n$message",
+			array( 'Reply-To: ' . $name . ' <' . $email . '>' )
+		);
+	}
+
+	wp_safe_redirect( add_query_arg( 'kontakt', $sent ? 'ok' : 'error', $back ) . '#kontaktformular' );
+	exit;
+}
+add_action( 'admin_post_nopriv_physio_contact', 'physio_wojcicki_handle_contact' );
+add_action( 'admin_post_physio_contact', 'physio_wojcicki_handle_contact' );
 
 /**
  * Practice contact details, centralised so header & footer stay in sync.

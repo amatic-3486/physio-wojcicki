@@ -110,6 +110,51 @@ body {
 	background-repeat: no-repeat;
 }
 
+/* Larger logo without increasing header height */
+header .custom-logo {
+	height: 4.25rem;
+	width: auto;
+	max-width: none;
+	margin: -0.75rem 0;
+}
+
+@media (min-width: 640px) {
+	header .custom-logo {
+		height: 4.5rem;
+	}
+}
+
+/* Desktop navigation: active item bold with terracotta underline */
+.desktop-nav ul {
+	gap: 2.25rem;
+	font-size: 0.9375rem;
+	font-weight: 400;
+}
+
+.desktop-nav ul a {
+	display: inline-block;
+	padding: 0.25rem 0;
+	border-bottom: 2px solid transparent;
+	color: var(--color-secondary);
+	font-weight: 400;
+	text-decoration: none;
+	transition: color 0.2s, border-color 0.2s;
+}
+
+.desktop-nav ul a:hover,
+.desktop-nav ul a:focus-visible {
+	color: var(--color-accent);
+}
+
+.desktop-nav ul .current-menu-item > a,
+.desktop-nav ul .current_page_item > a,
+.desktop-nav ul a[aria-current="page"],
+.desktop-nav ul a.border-accent {
+	color: var(--color-secondary);
+	font-weight: 600;
+	border-bottom-color: var(--color-accent);
+}
+
 .cookie-consent-banner {
 	left: 1rem;
 	right: 1rem;
@@ -121,5 +166,75 @@ body {
 		left: auto;
 		right: 1.5rem;
 		width: min(42rem, calc(100vw - 3rem));
+	}
+}
+
+
+/* Typography for editor content (Tailwind preflight resets headings) */
+.entry-content,
+.leistungen-intro {
+	line-height: 1.7;
+}
+
+.entry-content > * + * {
+	margin-top: 1rem;
+}
+
+.entry-content h2,
+.entry-content h3,
+.entry-content h4 {
+	font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+	color: var(--color-secondary);
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.entry-content h2 {
+	font-size: 1.75rem;
+	margin-top: 2.5rem;
+	margin-bottom: 0.75rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 2px solid #E8F2F4;
+}
+
+.entry-content h3 {
+	font-size: 1.375rem;
+	margin-top: 2rem;
+	margin-bottom: 0.5rem;
+}
+
+.entry-content h4 {
+	font-size: 1.125rem;
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.entry-content p {
+	color: #222222;
+}
+
+.entry-content a {
+	color: var(--color-accent);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.entry-content a:hover {
+	color: var(--color-secondary);
+}
+
+.entry-content strong {
+	font-weight: 600;
+	color: var(--color-secondary);
+}
+
+.entry-content ol {
+	list-style: decimal;
+	padding-left: 1.5rem;
+}
+
+@media (min-width: 640px) {
+	.entry-content h2 {
+		font-size: 2rem;
 	}
 }

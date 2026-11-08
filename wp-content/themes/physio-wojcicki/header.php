@@ -10,6 +10,12 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php if ( ! has_site_icon() ) : ?>
+		<link rel="icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/img/favicon.ico' ); ?>" sizes="48x48">
+		<link rel="icon" type="image/png" href="<?php echo esc_url( get_template_directory_uri() . '/assets/img/favicon-32.png' ); ?>" sizes="32x32">
+		<link rel="icon" type="image/png" href="<?php echo esc_url( get_template_directory_uri() . '/assets/img/favicon-512.png' ); ?>" sizes="512x512">
+		<link rel="apple-touch-icon" href="<?php echo esc_url( get_template_directory_uri() . '/assets/img/apple-touch-icon.png' ); ?>">
+	<?php endif; ?>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class( 'bg-white text-[#222222] antialiased' ); ?>>
@@ -24,11 +30,11 @@
 			<?php if ( has_custom_logo() ) : ?>
 				<?php the_custom_logo(); ?>
 			<?php else : ?>
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-12 w-auto">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/logo.png' ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="custom-logo">
 			<?php endif; ?>
 		</a>
 
-		<div class="hidden lg:flex items-center gap-8">
+		<div class="desktop-nav hidden lg:flex items-center gap-8">
 			<?php
 			wp_nav_menu(
 				array(
@@ -48,7 +54,7 @@
 				</svg>
 				<?php echo esc_html( physio_wojcicki_contact( 'phone' ) ); ?>
 			</a>
-			<a href="<?php echo esc_url( home_url( '/#kontakt' ) ); ?>" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
+			<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">
 				<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008Z" />
 				</svg>

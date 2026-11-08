@@ -47,7 +47,7 @@ $services = array(
 	array(
 		'title' => 'Trainingstherapie',
 		'text'  => 'Individuelles, therapeutisch begleitetes Training zur Stärkung von Muskulatur, Stabilität und Ausdauer – für mehr Belastbarkeit im Alltag.',
-		'img'   => 'gallery-aktiv.jpeg',
+		'img'   => 'fitness.jpeg',
 		'bg'    => 'bg-accent/10',
 		'color' => 'text-accent',
 		'path'  => 'M4.5 12h2.25m0 0V9.75m0 2.25V14.25M17.25 12h2.25M6.75 12h10.5M9 8.25v7.5M15 8.25v7.5',
@@ -95,13 +95,7 @@ $services = array(
 							</svg>
 						</span>
 						<h2 class="font-serif text-xl font-semibold text-secondary leading-tight mb-2"><?php echo esc_html( $s['title'] ); ?></h2>
-						<p class="text-sm text-[#555555] mb-4"><?php echo esc_html( $s['text'] ); ?></p>
-						<a href="<?php echo esc_url( home_url( '/#kontakt' ) ); ?>" class="mt-auto inline-flex items-center gap-2 border border-accent text-accent hover:bg-accent hover:text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors" aria-label="<?php echo esc_attr( 'Mehr erfahren: ' . $s['title'] ); ?>">
-							<?php esc_html_e( 'Mehr erfahren', 'physio-wojcicki' ); ?>
-							<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-							</svg>
-						</a>
+						<p class="text-sm text-[#555555]"><?php echo esc_html( $s['text'] ); ?></p>
 					</div>
 				</article>
 			<?php endforeach; ?>

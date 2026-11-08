@@ -18,7 +18,7 @@ get_header();
 				<h1 class="font-serif text-4xl font-semibold text-secondary leading-[1.15]"><?php the_title(); ?></h1>
 			</header>
 
-			<div class="prose prose-lg max-w-none text-[#222222]">
+			<div class="entry-content max-w-none text-[#222222]">
 				<?php the_content(); ?>
 			</div>
 

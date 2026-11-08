@@ -118,12 +118,7 @@ $img = get_template_directory_uri() . '/assets/img/';
 						</svg>
 					</div>
 					<h3 class="font-serif text-lg font-semibold text-secondary mb-2"><?php echo esc_html( $service['title'] ); ?></h3>
-					<p class="text-sm text-[#555555] mb-5"><?php echo esc_html( $service['text'] ); ?></p>
-					<a href="#kontakt" class="mt-auto w-9 h-9 rounded-full border border-accent/40 flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-colors" aria-label="<?php echo esc_attr( sprintf( __( 'Mehr über %s erfahren', 'physio-wojcicki' ), $service['title'] ) ); ?>">
-						<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-						</svg>
-					</a>
+					<p class="text-sm text-[#555555]"><?php echo esc_html( $service['text'] ); ?></p>
 				</div>
 			<?php endforeach; ?>
 		</div>
@@ -139,13 +134,7 @@ $img = get_template_directory_uri() . '/assets/img/';
 				<h2 class="font-serif text-3xl sm:text-4xl font-semibold text-secondary leading-[1.15]"><?php echo esc_html( physio_wojcicki_home_text( 'gallery_title' ) ); ?></h2>
 			</div>
 			<div class="max-w-md">
-				<p class="text-[#555555] mb-4"><?php echo esc_html( physio_wojcicki_home_text( 'gallery_text' ) ); ?></p>
-				<a href="#kontakt" class="inline-flex items-center gap-2 border border-accent text-accent hover:bg-accent hover:text-white font-semibold px-5 py-2.5 rounded-full transition-colors">
-					<?php echo esc_html( physio_wojcicki_home_text( 'gallery_button' ) ); ?>
-					<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-					</svg>
-				</a>
+				<p class="text-[#555555]"><?php echo esc_html( physio_wojcicki_home_text( 'gallery_text' ) ); ?></p>
 			</div>
 		</div>
 
@@ -158,7 +147,7 @@ $img = get_template_directory_uri() . '/assets/img/';
 					'label' => physio_wojcicki_home_text( 'gallery_1_label' ),
 				),
 				array(
-					'src'   => 'gallery-aktiv.jpeg',
+					'src'   => 'fitness.jpeg',
 					'alt'   => physio_wojcicki_home_text( 'gallery_2_alt' ),
 					'label' => physio_wojcicki_home_text( 'gallery_2_label' ),
 				),
