@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'PHYSIO_WOJCICKI_VERSION', '1.0.1' );
 
+require_once get_template_directory() . '/inc/home-content.php';
+
 /**
  * Theme setup.
  */
