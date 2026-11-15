@@ -76,7 +76,7 @@ $img = get_template_directory_uri() . '/assets/img/';
 					'text'  => physio_wojcicki_home_text( 'service_1_text' ),
 					'bg'    => 'bg-accent/10',
 					'color' => 'text-accent',
-					'path'  => 'M13.5 4.5 11 9l3 1-1.5 7.5L9 13l-3 1 2.5-7L6 6l4-1 1.5 2 2-2.5Z',
+					'path'  => 'M15 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 22l3-7-4-3 1-5M7 12V9l5-2 4 4h4M7 22l3-6',
 				),
 				array(
 					'title' => physio_wojcicki_home_text( 'service_2_title' ),
@@ -112,7 +112,7 @@ $img = get_template_directory_uri() . '/assets/img/';
 				?>
 				<div class="bg-white rounded-2xl p-6 text-center flex flex-col items-center shadow-sm border border-[#E5E7EB]">
 					<div class="w-16 h-16 rounded-full <?php echo esc_attr( $service['bg'] ); ?> flex items-center justify-center mb-5">
-						<svg class="w-7 h-7 <?php echo esc_attr( $service['color'] ); ?>" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+						<svg class="w-10 h-10 <?php echo esc_attr( $service['color'] ); ?>" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" d="<?php echo esc_attr( $service['path'] ); ?>" />
 						</svg>
 					</div>

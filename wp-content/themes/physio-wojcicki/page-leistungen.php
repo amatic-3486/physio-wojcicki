@@ -18,7 +18,7 @@ $services = array(
 		'img'   => 'Wojcicki-15.jpeg',
 		'bg'    => 'bg-accent/10',
 		'color' => 'text-accent',
-		'path'  => 'M13.5 4.5 11 9l3 1-1.5 7.5L9 13l-3 1 2.5-7L6 6l4-1 1.5 2 2-2.5Z',
+		'path'  => 'M15 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM12 22l3-7-4-3 1-5M7 12V9l5-2 4 4h4M7 22l3-6',
 	),
 	array(
 		'title' => 'Manuelle Therapie',
@@ -89,8 +89,8 @@ $services = array(
 				<article class="<?php echo $i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'; ?> flex flex-col sm:flex-row gap-5 bg-white border border-[#E5E7EB] rounded-2xl p-4 shadow-sm">
 					<img src="<?php echo esc_url( $img . $s['img'] ); ?>" alt="" class="w-full sm:w-40 h-48 sm:h-auto object-cover rounded-xl shrink-0">
 					<div class="flex flex-col items-start">
-						<span class="w-12 h-12 rounded-full <?php echo esc_attr( $s['bg'] . ' ' . $s['color'] ); ?> flex items-center justify-center mb-3">
-							<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+						<span class="w-16 h-16 rounded-full <?php echo esc_attr( $s['bg'] . ' ' . $s['color'] ); ?> flex items-center justify-center mb-3">
+							<svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
 								<path stroke-linecap="round" stroke-linejoin="round" d="<?php echo esc_attr( $s['path'] ); ?>" />
 							</svg>
 						</span>
