@@ -33,6 +33,6 @@ $link_label = get_post_meta( $member->ID, '_physio_team_link_label', true );
 		<div class="team-bio text-sm text-[#555555] mt-4"><?php echo apply_filters( 'the_content', $member->post_content ); ?></div>
 	<?php endif; ?>
 	<?php if ( $link && $link_label ) : ?>
-		<a href="<?php echo esc_url( $link ); ?>" class="team-link inline-flex items-center justify-center text-sm font-semibold mt-4"><?php echo esc_html( $link_label ); ?> <span aria-hidden="true">&nbsp;↗</span></a>
+		<a href="<?php echo esc_url( $link ); ?>" target="_blank" rel="noopener noreferrer" class="team-link inline-flex items-center justify-center text-sm font-semibold mt-4"><?php echo esc_html( $link_label ); ?> <span aria-hidden="true">&nbsp;↗</span></a>
 	<?php endif; ?>
 </article>
