@@ -22,9 +22,9 @@ $map_url = 'https://www.openstreetmap.org/search?query=' . rawurlencode( physio_
 $field   = 'w-full rounded-xl border border-[#C9D6E8] bg-white px-4 py-3 text-[#222222] placeholder-[#555555] focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30';
 ?>
 
-<section class="bg-cream overflow-hidden">
-	<div class="max-w-7xl mx-auto grid lg:grid-cols-2 items-stretch">
-		<div class="px-4 sm:px-6 lg:px-8 py-12 lg:py-16 flex flex-col justify-center">
+<section class="page-hero relative bg-cream overflow-hidden">
+	<div class="page-hero__content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="page-hero__copy flex flex-col justify-center py-12 sm:py-16 lg:py-16">
 			<p class="text-accent text-xs sm:text-sm font-semibold tracking-[0.1em] uppercase mb-4"><?php esc_html_e( 'Kontakt', 'physio-wojcicki' ); ?></p>
 			<h1 class="font-serif text-4xl sm:text-5xl font-bold text-secondary leading-[1.15] mb-4">
 				<?php esc_html_e( 'So erreichen Sie uns', 'physio-wojcicki' ); ?>
@@ -54,9 +54,9 @@ $field   = 'w-full rounded-xl border border-[#C9D6E8] bg-white px-4 py-3 text-[#
 				</a>
 			</div>
 		</div>
-		<div class="relative min-h-[240px] lg:min-h-[340px]">
-			<img src="<?php echo esc_url( $img . 'hero-reception.jpeg' ); ?>" alt="<?php esc_attr_e( 'Empfangsbereich der Praxis', 'physio-wojcicki' ); ?>" class="absolute inset-0 w-full h-full object-cover">
-		</div>
+	</div>
+	<div class="page-hero__image relative min-h-[320px]">
+		<img src="<?php echo esc_url( $img . 'hero-reception-wide.jpeg' ); ?>" alt="<?php esc_attr_e( 'Empfangsbereich der Praxis', 'physio-wojcicki' ); ?>" class="absolute inset-0 w-full h-full object-cover" decoding="async">
 	</div>
 </section>
 

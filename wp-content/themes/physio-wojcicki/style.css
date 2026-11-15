@@ -64,46 +64,59 @@ body {
 	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
 }
 
-/* Layered home hero */
-.home-hero {
+/* Layered page heroes */
+.home-hero,
+.page-hero {
 	isolation: isolate;
 }
 
-.home-hero__content {
+.home-hero__content,
+.page-hero__content {
 	position: relative;
 	z-index: 2;
 	box-sizing: border-box;
 	width: 100%;
 }
 
-.home-hero__copy {
+.home-hero__copy,
+.page-hero__copy {
 	box-sizing: border-box;
 	width: 100%;
 	max-width: 38rem;
 	min-width: 0;
 }
 
-.home-hero__image {
+.home-hero__image,
+.page-hero__image {
 	isolation: isolate;
 }
 
-.home-hero__image img {
+.home-hero__image img,
+.page-hero__image img {
 	object-position: center 52%;
 }
 
-.home-hero .hero-badge {
+.home-hero .hero-badge,
+.page-hero .hero-badge {
 	z-index: 2;
 	border: 1px solid rgba(200, 90, 50, 0.3);
 	box-shadow: 0 12px 30px -8px rgba(22, 51, 66, 0.3);
 }
 
 @media (max-width: 639px) {
-	.home-hero__copy > .flex {
+	.home-hero__copy,
+	.page-hero__copy {
+		width: min(100%, calc(100vw - 2rem));
+	}
+
+	.home-hero__copy > .flex,
+	.page-hero__copy > .flex {
 		flex-direction: column;
 		align-items: stretch;
 	}
 
-	.home-hero__copy > .flex > a {
+	.home-hero__copy > .flex > a,
+	.page-hero__copy > .flex > a {
 		box-sizing: border-box;
 		justify-content: center;
 		width: 100%;
@@ -111,21 +124,25 @@ body {
 }
 
 @media (min-width: 1024px) {
-	.home-hero {
+	.home-hero,
+	.page-hero {
 		min-height: 34rem;
 	}
 
-	.home-hero__content {
+	.home-hero__content,
+	.page-hero__content {
 		display: flex;
 		align-items: center;
 		min-height: 34rem;
 	}
 
-	.home-hero__copy {
+	.home-hero__copy,
+	.page-hero__copy {
 		width: 52%;
 	}
 
-	.home-hero__image {
+	.home-hero__image,
+	.page-hero__image {
 		position: absolute;
 		inset: 0 0 0 auto;
 		z-index: 0;
@@ -135,7 +152,9 @@ body {
 	}
 
 	.home-hero::before,
-	.home-hero::after {
+	.home-hero::after,
+	.page-hero::before,
+	.page-hero::after {
 		content: "";
 		position: absolute;
 		z-index: 1;
@@ -143,7 +162,8 @@ body {
 		border-radius: 50%;
 	}
 
-	.home-hero::before {
+	.home-hero::before,
+	.page-hero::before {
 		top: -34%;
 		left: -37%;
 		width: 100%;
@@ -151,7 +171,8 @@ body {
 		background: rgba(232, 242, 244, 0.5);
 	}
 
-	.home-hero::after {
+	.home-hero::after,
+	.page-hero::after {
 		top: -30%;
 		left: -40%;
 		width: 100%;

@@ -55,9 +55,9 @@ $services = array(
 );
 ?>
 
-<section class="bg-cream overflow-hidden">
-	<div class="max-w-7xl mx-auto grid lg:grid-cols-2 items-stretch">
-		<div class="px-4 sm:px-6 lg:px-8 py-12 lg:py-16 flex flex-col justify-center">
+<section class="page-hero relative bg-cream overflow-hidden">
+	<div class="page-hero__content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="page-hero__copy flex flex-col justify-center py-12 sm:py-16 lg:py-16">
 			<p class="text-accent text-xs sm:text-sm font-semibold tracking-[0.1em] uppercase mb-4"><?php esc_html_e( 'Unsere Leistungen', 'physio-wojcicki' ); ?></p>
 			<h1 class="font-serif text-4xl sm:text-5xl font-bold text-secondary leading-[1.15] mb-4">
 				<?php esc_html_e( 'Gezielte Therapien für Ihre Gesundheit.', 'physio-wojcicki' ); ?>
@@ -76,9 +76,9 @@ $services = array(
 				?>
 			</div>
 		</div>
-		<div class="relative min-h-[240px] lg:min-h-[320px]">
-			<img src="<?php echo esc_url( $img . 'gallery-behandlungsraum.jpeg' ); ?>" alt="<?php esc_attr_e( 'Behandlungsraum mit Therapieliege', 'physio-wojcicki' ); ?>" class="absolute inset-0 w-full h-full object-cover">
-		</div>
+	</div>
+	<div class="page-hero__image relative min-h-[320px]">
+		<img src="<?php echo esc_url( $img . 'hero-treatment.jpg' ); ?>" alt="<?php esc_attr_e( 'Physiotherapeutische Behandlung in der Praxis', 'physio-wojcicki' ); ?>" class="absolute inset-0 w-full h-full object-cover" decoding="async">
 	</div>
 </section>
 
