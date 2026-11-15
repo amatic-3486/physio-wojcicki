@@ -10,7 +10,6 @@
 get_header();
 
 $img    = get_template_directory_uri() . '/assets/img/';
-$status = isset( $_GET['kontakt'] ) ? sanitize_key( wp_unslash( $_GET['kontakt'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 $hours  = array(
 	'Montag'     => '8:30 – 17:00 Uhr',
 	'Dienstag'   => '8:30 – 19:00 Uhr',
@@ -19,7 +18,6 @@ $hours  = array(
 	'Freitag'    => '8:30 – 12:30 Uhr',
 );
 $map_url = 'https://www.openstreetmap.org/search?query=' . rawurlencode( physio_wojcicki_contact( 'address_1' ) . ', ' . physio_wojcicki_contact( 'address_2' ) );
-$field   = 'w-full rounded-xl border border-[#C9D6E8] bg-white px-4 py-3 text-[#222222] placeholder-[#555555] focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30';
 ?>
 
 <section class="page-hero relative bg-cream overflow-hidden">
@@ -125,42 +123,12 @@ $field   = 'w-full rounded-xl border border-[#C9D6E8] bg-white px-4 py-3 text-[#
 					</div>
 				</div>
 
-				<?php if ( 'ok' === $status ) : ?>
-					<p class="mb-4 rounded-xl bg-mint text-secondary px-4 py-3 text-sm" role="status"><?php esc_html_e( 'Vielen Dank! Ihre Nachricht wurde gesendet.', 'physio-wojcicki' ); ?></p>
-				<?php elseif ( 'error' === $status ) : ?>
-					<p class="mb-4 rounded-xl bg-accent/10 text-accent-dark px-4 py-3 text-sm" role="alert"><?php esc_html_e( 'Die Nachricht konnte nicht gesendet werden. Bitte prüfen Sie Ihre Angaben oder rufen Sie uns an.', 'physio-wojcicki' ); ?></p>
+				<?php $contact_form = physio_wojcicki_contact_form(); ?>
+				<?php if ( $contact_form ) : ?>
+					<?php echo do_shortcode( '[contact-form-7 id="' . absint( $contact_form->id() ) . '"]' ); ?>
+				<?php else : ?>
+					<p class="text-sm text-[#555555]" role="status"><?php esc_html_e( 'Das Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns telefonisch oder per E-Mail über die oben angegebenen Kontaktdaten.', 'physio-wojcicki' ); ?></p>
 				<?php endif; ?>
-
-				<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-					<input type="hidden" name="action" value="physio_contact">
-					<?php wp_nonce_field( 'physio_contact', 'physio_contact_nonce' ); ?>
-					<div class="hidden" aria-hidden="true">
-						<label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-					</div>
-					<div>
-						<label for="kontakt-name" class="sr-only"><?php esc_html_e( 'Ihr Name', 'physio-wojcicki' ); ?></label>
-						<input id="kontakt-name" name="name" type="text" required autocomplete="name" placeholder="<?php esc_attr_e( 'Ihr Name *', 'physio-wojcicki' ); ?>" class="<?php echo esc_attr( $field ); ?>">
-					</div>
-					<div>
-						<label for="kontakt-email" class="sr-only"><?php esc_html_e( 'Ihre E-Mail-Adresse', 'physio-wojcicki' ); ?></label>
-						<input id="kontakt-email" name="email" type="email" required autocomplete="email" placeholder="<?php esc_attr_e( 'Ihre E-Mail-Adresse *', 'physio-wojcicki' ); ?>" class="<?php echo esc_attr( $field ); ?>">
-					</div>
-					<div class="sm:col-span-2">
-						<label for="kontakt-message" class="sr-only"><?php esc_html_e( 'Ihre Nachricht', 'physio-wojcicki' ); ?></label>
-						<textarea id="kontakt-message" name="message" rows="5" required placeholder="<?php esc_attr_e( 'Ihre Nachricht *', 'physio-wojcicki' ); ?>" class="<?php echo esc_attr( $field ); ?>"></textarea>
-					</div>
-					<p class="sm:col-span-2 text-xs text-[#555555]">
-						<?php esc_html_e( 'Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung Ihrer Anfrage zu. Details finden Sie in der Datenschutzerklärung.', 'physio-wojcicki' ); ?>
-					</p>
-					<div class="sm:col-span-2">
-						<button type="submit" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-7 py-3.5 rounded-full transition-colors">
-							<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
-							</svg>
-							<?php esc_html_e( 'Nachricht senden', 'physio-wojcicki' ); ?>
-						</button>
-					</div>
-				</form>
 			</article>
 
 			<div class="flex flex-col gap-6">

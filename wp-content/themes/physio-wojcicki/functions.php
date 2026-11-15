@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'PHYSIO_WOJCICKI_VERSION', '1.0.2' );
 
 require_once get_template_directory() . '/inc/home-content.php';
+require_once get_template_directory() . '/inc/contact-form.php';
 
 /**
  * Theme setup.
@@ -142,43 +143,6 @@ function physio_wojcicki_fallback_menu() {
 	}
 	echo '</ul>';
 }
-
-/**
- * Handle the contact form on the "Kontakt" page.
- */
-function physio_wojcicki_handle_contact() {
-	$back = wp_get_referer() ? remove_query_arg( 'kontakt', wp_get_referer() ) : home_url( '/kontakt/' );
-
-	if ( ! isset( $_POST['physio_contact_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['physio_contact_nonce'] ) ), 'physio_contact' ) ) {
-		wp_safe_redirect( add_query_arg( 'kontakt', 'error', $back ) . '#kontaktformular' );
-		exit;
-	}
-
-	// Honeypot: bots fill this hidden field.
-	if ( ! empty( $_POST['website'] ) ) {
-		wp_safe_redirect( add_query_arg( 'kontakt', 'ok', $back ) . '#kontaktformular' );
-		exit;
-	}
-
-	$name    = sanitize_text_field( wp_unslash( $_POST['name'] ?? '' ) );
-	$email   = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
-	$message = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
-
-	$sent = false;
-	if ( '' !== $name && is_email( $email ) && '' !== $message ) {
-		$sent = wp_mail(
-			physio_wojcicki_contact( 'email' ),
-			'Kontaktanfrage von ' . str_replace( array( "\r", "\n" ), ' ', $name ),
-			"Name: $name\nE-Mail: $email\n\n$message",
-			array( 'Reply-To: ' . $name . ' <' . $email . '>' )
-		);
-	}
-
-	wp_safe_redirect( add_query_arg( 'kontakt', $sent ? 'ok' : 'error', $back ) . '#kontaktformular' );
-	exit;
-}
-add_action( 'admin_post_nopriv_physio_contact', 'physio_wojcicki_handle_contact' );
-add_action( 'admin_post_physio_contact', 'physio_wojcicki_handle_contact' );
 
 /**
  * Practice contact details, centralised so header & footer stay in sync.

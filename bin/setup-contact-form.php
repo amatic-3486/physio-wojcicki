@@ -12,13 +12,21 @@ try {
 	}
 	$post = get_page_by_path( 'physio-kontakt', OBJECT, 'wpcf7_contact_form' );
 	if ( $post ) {
+		if ( in_array( '--update-messages', $argv, true ) ) {
+			$form = wpcf7_contact_form( $post->ID );
+			$form->set_properties( array( 'messages' => array_replace( $form->prop( 'messages' ), physio_wojcicki_contact_form_messages() ) ) );
+			if ( ! $form->save() ) {
+				throw new RuntimeException( 'Could not update contact form messages.' );
+			}
+			echo 'Contact form messages updated: ' . $post->ID . PHP_EOL;
+			exit( 0 );
+		}
 		echo 'Existing contact form preserved: ' . $post->ID . PHP_EOL;
 		exit( 0 );
 	}
 	$form = WPCF7_ContactForm::get_template( array( 'locale' => 'de_DE', 'title' => 'Kontakt – Physiotherapie Wojcicki' ) );
 	$mail = $form->prop( 'mail' );
 	$mail['recipient'] = physio_wojcicki_contact( 'email' );
-	$mail['sender'] = 'Physiotherapie Wojcicki <' . physio_wojcicki_contact( 'email' ) . '>';
 	$mail['subject'] = 'Kontaktanfrage von [your-name]';
 	$mail['body'] = "Name: [your-name]\nE-Mail: [your-email]\n\n[your-message]\n\nGesendet über das Kontaktformular auf [_site_title] ([_site_url]).";
 	$mail['additional_headers'] = 'Reply-To: [your-email]';
@@ -27,6 +35,7 @@ try {
 		array(
 			'form' => sprintf( physio_wojcicki_contact_form_template(), esc_url( $privacy_url ) ),
 			'mail' => $mail,
+			'messages' => array_replace( $form->prop( 'messages' ), physio_wojcicki_contact_form_messages() ),
 		)
 	);
 	$id = $form->save();

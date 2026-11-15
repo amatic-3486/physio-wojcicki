@@ -59,6 +59,84 @@ body {
 	top: 0;
 }
 
+/* Contact Form 7 sanitizes punctuation in utility class options. */
+#kontaktformular .physio-contact-wide {
+	grid-column: 1 / -1;
+}
+
+#kontaktformular .grid > div {
+	min-width: 0;
+}
+
+#kontaktformular .physio-contact-field {
+	border-color: #C9D6E8;
+	color: var(--color-text);
+}
+
+#kontaktformular .physio-contact-field::placeholder {
+	color: var(--color-text-light);
+	opacity: 1;
+}
+
+#kontaktformular .physio-contact-field:focus {
+	border-color: var(--color-accent);
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+#kontaktformular .wpcf7-submit {
+	max-width: 100%;
+	white-space: normal;
+	cursor: pointer;
+}
+
+#kontaktformular .wpcf7-submit:hover {
+	background-color: var(--color-secondary);
+}
+
+#kontaktformular .wpcf7-submit:focus-visible {
+	outline: 2px solid var(--color-secondary);
+	outline-offset: 3px;
+}
+
+#kontaktformular .wpcf7-not-valid-tip {
+	color: #a52a21;
+	font-size: 0.875rem;
+}
+
+#kontaktformular .wpcf7-response-output {
+	margin: 1.5rem 0 0;
+	padding: 1rem 1.25rem;
+	border: 1px solid #C9D6E8;
+	border-inline-start-width: 4px;
+	border-radius: 0.75rem;
+	background-color: var(--color-cream, #F9F6F0);
+	color: var(--color-secondary);
+	font-size: 0.9375rem;
+	line-height: 1.65;
+	overflow-wrap: anywhere;
+}
+
+#kontaktformular form.sent .wpcf7-response-output {
+	border-color: #487681;
+	background-color: #E8F2F4;
+}
+
+#kontaktformular form.invalid .wpcf7-response-output,
+#kontaktformular form.unaccepted .wpcf7-response-output,
+#kontaktformular form.payment-required .wpcf7-response-output {
+	border-color: #BD4F28;
+	background-color: #F9F6F0;
+}
+
+#kontaktformular form.failed .wpcf7-response-output,
+#kontaktformular form.aborted .wpcf7-response-output,
+#kontaktformular form.spam .wpcf7-response-output {
+	border-color: #A34229;
+	background-color: #FBEFE9;
+	color: #84351F;
+}
+
 /* Floating hero badge */
 .hero-badge {
 	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
