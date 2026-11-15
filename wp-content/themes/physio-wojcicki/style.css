@@ -418,6 +418,16 @@ header .custom-logo {
 	}
 }
 
+#mobile-menu a {
+	color: var(--color-secondary);
+	font-weight: 600;
+}
+
+#mobile-menu a:hover,
+#mobile-menu a:focus-visible {
+	color: var(--color-accent);
+}
+
 /* Desktop navigation: active item bold with terracotta underline */
 .desktop-nav ul {
 	gap: 2.25rem;
