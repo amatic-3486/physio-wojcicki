@@ -15,7 +15,7 @@ $hours  = array(
 	'Dienstag'   => '8:30 – 19:00 Uhr',
 	'Mittwoch'   => '8:30 – 17:00 Uhr',
 	'Donnerstag' => '8:30 – 19:00 Uhr',
-	'Freitag'    => '8:30 – 12:30 Uhr',
+	'Freitag'    => '8:30 – 12:00 Uhr',
 );
 $map_url = 'https://www.openstreetmap.org/search?query=' . rawurlencode( physio_wojcicki_contact( 'address_1' ) . ', ' . physio_wojcicki_contact( 'address_2' ) );
 ?>

@@ -50,12 +50,24 @@
 				<h2 class="font-serif text-2xl font-semibold text-secondary mb-6"><?php esc_html_e( 'Unsere Sprechzeiten', 'physio-wojcicki' ); ?></h2>
 				<dl class="divide-y divide-[#E5E7EB] text-sm">
 					<div class="flex items-start justify-between gap-4 py-3">
-						<dt class="font-semibold text-secondary"><?php esc_html_e( 'Montag – Donnerstag', 'physio-wojcicki' ); ?></dt>
-						<dd class="text-right text-[#555555]">08:00 – 12:00 Uhr<br>14:00 – 18:00 Uhr</dd>
+						<dt class="font-semibold text-secondary"><?php esc_html_e( 'Montag', 'physio-wojcicki' ); ?></dt>
+						<dd class="text-right text-[#555555]">8:30 – 17:00 Uhr</dd>
+					</div>
+					<div class="flex items-start justify-between gap-4 py-3">
+						<dt class="font-semibold text-secondary"><?php esc_html_e( 'Dienstag', 'physio-wojcicki' ); ?></dt>
+						<dd class="text-right text-[#555555]">8:30 – 19:00 Uhr</dd>
+					</div>
+					<div class="flex items-start justify-between gap-4 py-3">
+						<dt class="font-semibold text-secondary"><?php esc_html_e( 'Mittwoch', 'physio-wojcicki' ); ?></dt>
+						<dd class="text-right text-[#555555]">8:30 – 17:00 Uhr</dd>
+					</div>
+					<div class="flex items-start justify-between gap-4 py-3">
+						<dt class="font-semibold text-secondary"><?php esc_html_e( 'Donnerstag', 'physio-wojcicki' ); ?></dt>
+						<dd class="text-right text-[#555555]">8:30 – 19:00 Uhr</dd>
 					</div>
 					<div class="flex items-start justify-between gap-4 py-3">
 						<dt class="font-semibold text-secondary"><?php esc_html_e( 'Freitag', 'physio-wojcicki' ); ?></dt>
-						<dd class="text-right text-[#555555]">08:00 – 13:00 Uhr</dd>
+						<dd class="text-right text-[#555555]">8:30 – 12:00 Uhr</dd>
 					</div>
 				</dl>
 				<p class="text-xs text-[#555555] mt-4"><?php esc_html_e( 'Termine nach Vereinbarung.', 'physio-wojcicki' ); ?></p>
