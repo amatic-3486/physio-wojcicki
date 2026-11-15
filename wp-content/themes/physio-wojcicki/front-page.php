@@ -13,10 +13,9 @@ $img = get_template_directory_uri() . '/assets/img/';
 ?>
 
 <!-- Hero Section -->
-<section class="relative bg-cream overflow-hidden">
-	<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-stretch">
-
-		<div class="px-4 sm:px-6 lg:px-8 py-16 lg:py-24 flex flex-col justify-center">
+<section class="home-hero relative bg-cream overflow-hidden">
+	<div class="home-hero__content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="home-hero__copy flex flex-col justify-center py-12 sm:py-16 lg:py-16">
 			<p class="text-accent text-xs sm:text-sm font-semibold tracking-[0.1em] uppercase mb-4">
 				<?php echo esc_html( physio_wojcicki_home_text( 'hero_eyebrow' ) ); ?>
 			</p>
@@ -47,13 +46,13 @@ $img = get_template_directory_uri() . '/assets/img/';
 				</a>
 			</div>
 		</div>
+	</div>
 
-		<div class="relative min-h-[320px] lg:min-h-0">
-			<img src="<?php echo esc_url( $img . 'hero-reception.jpeg' ); ?>" alt="<?php echo esc_attr( physio_wojcicki_home_text( 'hero_image_alt' ) ); ?>" class="absolute inset-0 w-full h-full object-cover">
+	<div class="home-hero__image relative min-h-[320px]">
+		<img src="<?php echo esc_url( $img . 'hero-reception-wide.jpeg' ); ?>" alt="<?php echo esc_attr( physio_wojcicki_home_text( 'hero_image_alt' ) ); ?>" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high" decoding="async">
 
-			<div class="hero-badge font-script text-lg sm:text-xl text-accent bg-white rounded-full w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center text-center p-4 absolute bottom-6 right-6 rotate-[-6deg] leading-tight">
-				<?php echo esc_html( physio_wojcicki_home_text( 'hero_badge' ) ); ?>
-			</div>
+		<div class="hero-badge font-script text-lg sm:text-xl text-accent bg-white rounded-full w-32 h-32 sm:w-36 sm:h-36 flex items-center justify-center text-center p-4 absolute bottom-6 right-6 rotate-[-6deg] leading-tight">
+			<?php echo esc_html( physio_wojcicki_home_text( 'hero_badge' ) ); ?>
 		</div>
 	</div>
 </section>
