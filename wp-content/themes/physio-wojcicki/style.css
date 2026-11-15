@@ -181,6 +181,16 @@ body {
 	box-shadow: 0 12px 30px -8px rgba(22, 51, 66, 0.3);
 }
 
+.home-hero .hero-badge {
+	right: 1rem;
+}
+
+@media (min-width: 640px) {
+	.home-hero .hero-badge {
+		right: 1.5rem;
+	}
+}
+
 @media (max-width: 639px) {
 	.home-hero__copy,
 	.page-hero__copy {
@@ -202,6 +212,10 @@ body {
 }
 
 @media (min-width: 1024px) {
+	.home-hero .hero-badge {
+		right: max(2rem, calc((100vw - 80rem) / 2 + 2rem));
+	}
+
 	.home-hero,
 	.page-hero {
 		min-height: 34rem;
