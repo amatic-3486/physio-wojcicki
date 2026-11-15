@@ -15,7 +15,7 @@ $services = array(
 	array(
 		'title' => 'Physiotherapie',
 		'text'  => 'Gezielte Behandlung zur Schmerzlinderung, Verbesserung der Beweglichkeit und Wiederherstellung Ihrer körperlichen Funktion.',
-		'img'   => 'gallery-behandlungsraum.jpeg',
+		'img'   => 'Wojcicki-15.jpeg',
 		'bg'    => 'bg-accent/10',
 		'color' => 'text-accent',
 		'path'  => 'M13.5 4.5 11 9l3 1-1.5 7.5L9 13l-3 1 2.5-7L6 6l4-1 1.5 2 2-2.5Z',
@@ -23,7 +23,7 @@ $services = array(
 	array(
 		'title' => 'Manuelle Therapie',
 		'text'  => 'Spezielle, sanfte Techniken zur Mobilisation von Gelenken, Muskeln und Nerven – bei akuten und chronischen Beschwerden.',
-		'img'   => 'gallery-individuell.jpeg',
+		'img'   => 'Wojcicki-17.jpeg',
 		'bg'    => 'bg-mint',
 		'color' => 'text-secondary',
 		'path'  => 'M12 3v2.25M12 18.75V21M5.636 5.636l1.591 1.591M16.773 16.773l1.591 1.591M3 12h2.25M18.75 12H21M5.636 18.364l1.591-1.591M16.773 7.227l1.591-1.591',
@@ -31,7 +31,7 @@ $services = array(
 	array(
 		'title' => 'Manuelle Lymphdrainage',
 		'text'  => 'Eine besonders sanfte Methode, die den Lymphabfluss anregt, Schwellungen reduziert und das Gewebe entlastet.',
-		'img'   => 'hero-reception.jpeg',
+		'img'   => 'Wojcicki-20.jpeg',
 		'bg'    => 'bg-accent/10',
 		'color' => 'text-accent',
 		'path'  => 'M3 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0M3 17c2-3 4-3 6 0s4 3 6 0 4-3 6 0',
@@ -39,7 +39,7 @@ $services = array(
 	array(
 		'title' => 'Osteopathie',
 		'text'  => 'Eine ganzheitliche Behandlung, die Funktionsstörungen im Körper erkennt und behandelt – für mehr Balance, Beweglichkeit und Wohlbefinden.',
-		'img'   => 'gallery-praxis-aussen.jpeg',
+		'img'   => 'Wojcicki-22.jpg',
 		'bg'    => 'bg-mint',
 		'color' => 'text-secondary',
 		'path'  => 'M12 21c-4.97-3.5-9-7-9-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4-4.03 7.5-9 11Z',
@@ -47,7 +47,7 @@ $services = array(
 	array(
 		'title' => 'Trainingstherapie',
 		'text'  => 'Individuelles, therapeutisch begleitetes Training zur Stärkung von Muskulatur, Stabilität und Ausdauer – für mehr Belastbarkeit im Alltag.',
-		'img'   => 'fitness.jpeg',
+		'img'   => 'Wojcicki-06.jpeg',
 		'bg'    => 'bg-accent/10',
 		'color' => 'text-accent',
 		'path'  => 'M4.5 12h2.25m0 0V9.75m0 2.25V14.25M17.25 12h2.25M6.75 12h10.5M9 8.25v7.5M15 8.25v7.5',

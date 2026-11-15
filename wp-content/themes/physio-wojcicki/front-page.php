@@ -141,22 +141,22 @@ $img = get_template_directory_uri() . '/assets/img/';
 			<?php
 			$gallery = array(
 				array(
-					'src'   => 'gallery-behandlungsraum.jpeg',
+					'src'   => 'Wojcicki-15.jpeg',
 					'alt'   => physio_wojcicki_home_text( 'gallery_1_alt' ),
 					'label' => physio_wojcicki_home_text( 'gallery_1_label' ),
 				),
 				array(
-					'src'   => 'fitness.jpeg',
+					'src'   => 'Wojcicki-06.jpeg',
 					'alt'   => physio_wojcicki_home_text( 'gallery_2_alt' ),
 					'label' => physio_wojcicki_home_text( 'gallery_2_label' ),
 				),
 				array(
-					'src'   => 'gallery-individuell.jpeg',
+					'src'   => 'Wojcicki-17.jpeg',
 					'alt'   => physio_wojcicki_home_text( 'gallery_3_alt' ),
 					'label' => physio_wojcicki_home_text( 'gallery_3_label' ),
 				),
 				array(
-					'src'   => 'gallery-praxis-aussen.jpeg',
+					'src'   => 'Wojcicki-04.jpg',
 					'alt'   => physio_wojcicki_home_text( 'gallery_4_alt' ),
 					'label' => physio_wojcicki_home_text( 'gallery_4_label' ),
 				),

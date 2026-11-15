@@ -153,7 +153,7 @@ function physio_wojcicki_contact( $key ) {
 		'phone_href'  => 'tel:+4950349260500',
 		'address_1'   => 'Hagener Straße 54a',
 		'address_2'   => '31535 Neustadt am Rübenberge',
-		'email'       => 'info@physiotherapie-wojcicki.de',
+		'email'       => 'praxis-wojcicki@gmx.de',
 	);
 
 	return isset( $contact[ $key ] ) ? $contact[ $key ] : '';
