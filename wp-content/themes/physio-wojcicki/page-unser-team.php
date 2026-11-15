@@ -32,8 +32,14 @@ foreach ( $members as $member ) {
 			<?php endif; ?>
 			<h1 id="team-title" class="font-serif text-4xl sm:text-5xl font-bold text-secondary leading-[1.15] mb-4"><?php the_title(); ?></h1>
 			<div class="team-intro text-[#555555] max-w-md"><?php the_content(); ?></div>
-			<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>" class="self-start inline-flex items-center gap-2 bg-accent-dark text-white font-semibold px-6 py-3 rounded-full mt-6">
+			<a href="<?php echo esc_url( home_url( '/kontakt/#kontaktformular' ) ); ?>" class="self-start inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3.5 rounded-full transition-colors mt-6">
+				<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+				</svg>
 				<?php esc_html_e( 'Termin vereinbaren', 'physio-wojcicki' ); ?>
+				<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+				</svg>
 			</a>
 		</div>
 	</div>
