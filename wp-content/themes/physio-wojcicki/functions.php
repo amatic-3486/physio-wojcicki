@@ -28,6 +28,7 @@ function physio_wojcicki_setup() {
 
 	// Enable support for Post Thumbnails on posts and pages.
 	add_theme_support( 'post-thumbnails' );
+	add_post_type_support( 'page', 'excerpt' );
 
 	// Switch default core markup to output valid HTML5.
 	add_theme_support(
@@ -122,12 +123,13 @@ function physio_wojcicki_fallback_menu() {
 		'Startseite'        => home_url( '/' ),
 		'Unsere Leistungen' => home_url( '/#leistungen' ),
 		'Praxis'            => home_url( '/#praxis' ),
+		'Unser Team'        => home_url( '/unser-team/' ),
 		'Kontakt'           => home_url( '/kontakt/' ),
 	);
 
 	echo '<ul class="flex flex-col gap-3 text-base font-medium lg:flex-row lg:items-center lg:gap-8 lg:text-sm">';
 	foreach ( $items as $label => $url ) {
-		$is_active = ( 'Startseite' === $label && is_front_page() );
+		$is_active = ( 'Startseite' === $label && is_front_page() ) || ( 'Unser Team' === $label && is_page( 'unser-team' ) );
 		$classes   = $is_active
 			? 'text-secondary font-semibold border-b-2 border-accent pb-1'
 			: 'text-secondary hover:text-accent transition-colors';

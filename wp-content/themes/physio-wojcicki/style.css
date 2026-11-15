@@ -181,6 +181,91 @@ body {
 	}
 }
 
+/* Airy team cards with circular portraits */
+.team-section {
+	padding: 4.5rem 0 6rem;
+}
+
+.team-container {
+	max-width: 68rem;
+}
+
+.team-grid {
+	gap: 2rem;
+	justify-items: center;
+	align-items: start;
+}
+
+.team-grid + .team-grid {
+	margin-top: 3.5rem;
+}
+
+.team-card {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 20rem;
+	min-width: 0;
+	padding: 2.25rem 1.5rem;
+	overflow-wrap: anywhere;
+}
+
+.team-portrait {
+	width: 10rem;
+	height: 10rem;
+	margin-bottom: 1.75rem;
+}
+
+.team-portrait img {
+	object-position: center;
+}
+
+.team-role,
+.team-bio {
+	line-height: 1.8;
+}
+
+.team-bio > * + *,
+.team-intro > * + * {
+	margin-top: 1rem;
+}
+
+.team-link {
+	color: var(--color-accent-dark);
+	text-decoration: underline;
+	text-underline-offset: 0.25em;
+}
+
+.team-card a:focus-visible {
+	outline: 2px solid var(--color-secondary);
+	outline-offset: 4px;
+}
+
+@media (min-width: 768px) {
+	.team-section {
+		padding: 6rem 0 8rem;
+	}
+
+	.team-grid {
+		column-gap: 3rem;
+		row-gap: 3.5rem;
+	}
+
+	.team-grid--featured {
+		max-width: 48rem;
+		margin: 0 auto;
+		align-items: stretch;
+	}
+
+	.team-grid--featured .team-card {
+		max-width: 22rem;
+	}
+
+	.team-portrait {
+		width: 11rem;
+		height: 11rem;
+	}
+}
+
 /* Mobile menu transition */
 #mobile-menu {
 	transition: max-height 0.3s ease-in-out;
