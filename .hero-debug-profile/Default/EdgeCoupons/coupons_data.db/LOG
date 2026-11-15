@@ -1,0 +1,5 @@
+2026/11/15-14:25:31.366 75cc Creating DB C:\Users\anton\Local Sites\physiotherapie-wojcicki\app\public\.hero-debug-profile\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/11/15-14:25:31.411 75cc Reusing MANIFEST C:\Users\anton\Local Sites\physiotherapie-wojcicki\app\public\.hero-debug-profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/11/15-14:25:31.579 67e4 Level-0 table #5: started
+2026/11/15-14:25:31.581 67e4 Level-0 table #5: 683273 bytes OK
+2026/11/15-14:25:31.582 67e4 Delete type=0 #3
